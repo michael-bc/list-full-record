@@ -5,12 +5,13 @@ ARG REACT_APP_API_BASE_URL
 WORKDIR /app
 
 COPY package*.json ./
+COPY yarn.lock ./
 
-RUN npm install
+RUN yarn install
 
 COPY . .
 
-RUN npm run build
+RUN yarn build
 
 
 FROM nginx:stable-alpine as production-stage
